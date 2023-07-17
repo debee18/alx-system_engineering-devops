@@ -1,4 +1,4 @@
-ntroduction:
+Introduction:
 In the process of understanding what happens when you type "https://www.google.com" in your browser and press Enter, it's important to highlight the crucial role of Content Delivery Networks (CDNs) in optimizing website performance. CDNs have become an integral part of the modern web infrastructure, and their presence significantly impacts the user experience. In this contribution, let's delve into how CDNs enhance the delivery of Google's web content to users worldwide.
 
 Content Delivery Networks (CDNs):
