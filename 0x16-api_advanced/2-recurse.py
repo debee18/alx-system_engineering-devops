@@ -3,17 +3,17 @@
 Using reddit's API
 """
 import requests
+
+# Initialize 'after' as None for the first request
 after = None
 
-
 def recurse(subreddit, hot_list=[]):
-    """returning top ten post titles recursively"""
+    """Return top ten post titles recursively"""
     global after
     user_agent = {'User-Agent': 'api_advanced-project'}
-    url = "https://www.reddit.com/r/{}/hot.json".format(subreddit)
+    url = f"https://www.reddit.com/r/{subreddit}/hot.json"
     parameters = {'after': after}
-    results = requests.get(url, params=parameters, headers=user_agent,
-                           allow_redirects=False)
+    results = requests.get(url, params=parameters, headers=user_agent, allow_redirects=False)
 
     if results.status_code == 200:
         after_data = results.json().get("data").get("after")
@@ -25,4 +25,15 @@ def recurse(subreddit, hot_list=[]):
             hot_list.append(title_.get("data").get("title"))
         return hot_list
     else:
-        return (None)
+        return None
+
+# Example usage
+if __name__ == "__main__":
+    subreddit_name = "python"  # Replace with the desired subreddit
+    titles = recurse(subreddit_name)
+    if titles:
+        for i, title in enumerate(titles[:10], start=1):
+            print(f"{i}. {title}")
+    else:
+        print("Invalid subreddit or API request error.")
+
